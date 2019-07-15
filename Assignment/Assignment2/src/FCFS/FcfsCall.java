@@ -39,7 +39,7 @@ public class FcfsCall {
 			completionTimeData = obj1.completionTime(timeData);
 			for(int i=0; i<numberOfProcess; i++)
 			{
-				System.out.println("Completion Time of process "+(i+1)+" in seconds : "+completionTimeData[i]);
+				System.out.println("Process "+(i+1)+" in seconds : "+completionTimeData[i]);
 			}
 			System.out.println("\n");
 			System.out.println("Turn Around Time.");
@@ -48,7 +48,7 @@ public class FcfsCall {
 			turnAroundTimeData = obj1.turnAroundTime(timeData, completionTimeData);
 			for(int i=0; i<numberOfProcess; i++)
 			{
-				System.out.println("Turn Around Time of process "+(i+1)+" in seconds : "+turnAroundTimeData[i]);
+				System.out.println("Process "+(i+1)+" in seconds : "+turnAroundTimeData[i]);
 			}
 			System.out.println("\n");
 			System.out.println("Waiting Time.");
@@ -57,7 +57,7 @@ public class FcfsCall {
 			waitingTimeData = obj1.waitingTime(timeData, turnAroundTimeData);
 			for(int i=0; i<numberOfProcess; i++)
 			{
-				System.out.println("Waiting Time of process "+(i+1)+" in seconds : "+waitingTimeData[i]);
+				System.out.println("Process "+(i+1)+" in seconds : "+waitingTimeData[i]);
 			}
 			System.out.println("\n");
 			double avgWaitingTimeOfProcess = obj1.avgWatingTimeOfProces(waitingTimeData);

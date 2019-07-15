@@ -10,12 +10,20 @@ public class JobScheduler implements TimeInterface {
 	 * Compute The process of Converting Arrival time And Burst Time data into Completion Time Of
 	 * a given Process.
 	 * @param Pass the 2-D Array in which Arrival time And Burst Time data is Stored.
-	 * @return Return An 1-D Array in Which Completion Time of the Corresponding Process is Stored.
+	 * @return Return An 1-D Array in Which Completion Time of the Corresponding Process are Stored.
 	 */
 	public int[] completionTime (int [][] dataOnTime)
 	{
 		int completionTimeData [] = new int [dataOnTime.length];
-		completionTimeData[0] = dataOnTime[0][1];
+		if(dataOnTime[0][0] == 0)
+		{
+			completionTimeData[0] = dataOnTime[0][1];			
+		}
+		else
+		{
+			completionTimeData[0] = dataOnTime[0][1] + dataOnTime[0][0];
+		}
+		
 		for(int i=1; i< dataOnTime.length;i++)
 		{
 			if(completionTimeData[i-1] > dataOnTime[i][0])
