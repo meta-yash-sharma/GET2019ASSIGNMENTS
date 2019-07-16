@@ -119,8 +119,15 @@ class ClassMarkSheet {
 			if(classOfStudent[i] > passingGrade)
 				count++;
 		}
-		percentageOfStudentPass = (count*100)/numberOfStudent;
-		return percentageOfStudentPass;
+		try{
+			percentageOfStudentPass = (count*100)/numberOfStudent;
+			return percentageOfStudentPass;
+		}
+		catch(ArithmeticException e){
+			System.out.println("Percentage can't be known due to error");			
+		}
+		return -1;
+		
 	}
 	
 }
