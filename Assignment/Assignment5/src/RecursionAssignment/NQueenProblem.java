@@ -4,7 +4,7 @@ public class NQueenProblem {
 	
 	
 	/**
-	 * Creates An N×N chessboard , And place Queen in such position that no two queens 
+	 * Creates An NÃ—N chessboard , And place Queen in such position that no two queens 
 	 * attack each other  (Thus, a solution requires that no two queens share the 
 	 * same row, column, or diagonal). 
 	 * @param gridSize The Size of checkBox you want to place Queen in such that 
@@ -15,17 +15,11 @@ public class NQueenProblem {
 	public boolean placeQueens(int gridSize){
 		
 		boolean queenInBoard = false;
-		//If Grid is 1*1 or 2*2 or 3*3 then solution is not possible as, 
-		//In 1*1 or 2*2 grid, Queen placed in 1st row at any position will attack queen placed at all the positions in row 2. 
-		//In 3*3 grid, Queen placed in 1st row and 2nd row for all combinations position will attack queen placed at all the positions in row 3. 
-		if(gridSize<4){ 
-			System.out.println("No Solution available");
-		}
-		else {
-			int[][] board = new int[gridSize][gridSize];
-			queenInBoard = placeAllQueens(board, 0);
+		int[][] board = new int[gridSize][gridSize];
+		queenInBoard = placeAllQueens(board, 0);
 			//printBoard(board);
-		}
+		if(!queenInBoard)
+			System.out.println("No Solution");
 		return queenInBoard;
 	}
 	
