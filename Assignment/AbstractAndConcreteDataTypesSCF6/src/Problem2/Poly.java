@@ -19,13 +19,8 @@ public final class Poly {
 	
 	public double evaluate(float x) {
 		double sum = 0;
-		try {
 			for (int i = 0; i <= highestDegree; i++) {
 				sum = sum + (polynomial[i] * Math.pow(x, i));
-				}
-			}
-		catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Invalid Access");
 			}
 		return sum;
 		}
@@ -53,15 +48,11 @@ public final class Poly {
 			degPolyAdd = degPolyOne;
 		else
 			degPolyAdd = degPolyTwo;
-		int[] additionPoly = new int[degPolyAdd];
-		try {
+		int[] additionPoly = new int[degPolyAdd]
 			for (int i = 0; i < degPolyOne; i++)
 				additionPoly[i] = poly1.polynomial[i];
 			for (int i = 0; i < degPolyTwo; i++)
 				additionPoly[i] += poly2.polynomial[i];
-			} catch (ArrayIndexOutOfBoundsException e) {
-				System.out.println("Invalid Access");
-				}
 		return additionPoly;
 		}
 
@@ -79,7 +70,6 @@ public final class Poly {
 		int degPolyProduct = degPolyOne + degPolyTwo-1;
 
 		int[] product = new int[degPolyProduct];
-		try {
 			for (int i = 0; i < degPolyProduct; i++)
 				product[i] = 0;
 			for (int i = 0; i < degPolyOne; i++) {
@@ -87,9 +77,6 @@ public final class Poly {
 					product[i + j] += poly1.polynomial[i] * poly2.polynomial[j];
 				}
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Invalid Access");
-		}
 		return product;
 		}
 }
