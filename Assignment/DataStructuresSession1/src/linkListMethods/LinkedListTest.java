@@ -28,6 +28,8 @@ public class LinkedListTest {
 		
 		list.rotateSubList(2, 5, 2);
 		
+		//assertEquals(expected,list);
+		
 		for(int index = 0; index < list.size(); index++){
 			assertThat(list.get(index),is(expected.get(index)));			
 		}		
