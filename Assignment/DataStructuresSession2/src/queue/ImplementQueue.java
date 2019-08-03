@@ -5,6 +5,7 @@ public class ImplementQueue implements Queue {
 	
 	private int front,rear,capacity;
 	private int [] queue;
+	private int queueSize = 0;
 	
 	public ImplementQueue(int capacity){
 		front = -1;
@@ -16,7 +17,7 @@ public class ImplementQueue implements Queue {
 	
 
 	@Override
-	public void addQueue(int data) {
+	public void enQueue(int data) {
 		
 		if(full()){
 			System.out.println("Queue is full.");
@@ -35,15 +36,17 @@ public class ImplementQueue implements Queue {
 			rear++;
 			queue[rear] = data;
 		}
+		queueSize++;
 	}
 
 	@Override
-	public void deleteQueue() {
+	public int deQueue() {
 		
 		if(empty()){
 			System.out.println("Queue is Empty.");
-			return;
+			return Integer.MIN_VALUE;
 		}
+		int item = queue[front];
 		queue[front] = -1;
 		
 		if(front == rear){
@@ -54,7 +57,11 @@ public class ImplementQueue implements Queue {
 			front = 0;
 		}
 		else
-			front++;		
+			front++;
+		
+		queueSize--;
+		
+		return item;
 	}
 
 	@Override
@@ -78,6 +85,15 @@ public class ImplementQueue implements Queue {
 		return isFull;
 	}
 	
+	
+	@Override
+	public int size() {
+		return queueSize;
+	}
+	
+	/**
+	 * Display All the Element in the Queue in the Systematic order.
+	 */
 	public void display(){
 		
 		if(front == -1){
@@ -103,28 +119,28 @@ public class ImplementQueue implements Queue {
 	public static void main(String[] args) {
 		
 		ImplementQueue queue1 = new ImplementQueue(5);
-		queue1.addQueue(1);
-		queue1.addQueue(2);
-		queue1.addQueue(3);
-		queue1.addQueue(4);
-		queue1.addQueue(5);
+		queue1.enQueue(1);
+		queue1.enQueue(2);
+		queue1.enQueue(3);
+		queue1.enQueue(4);
+		queue1.enQueue(5);
 		
 		queue1.display();
-		queue1.addQueue(6);
+		queue1.enQueue(6);
 		
-		queue1.deleteQueue();
-		queue1.addQueue(6);
+		queue1.deQueue();
+		queue1.enQueue(6);
 		
 		queue1.display();
 		
-		queue1.deleteQueue();
-		queue1.deleteQueue();
+		queue1.deQueue();
+		queue1.deQueue();
 		queue1.display();
 		
-		queue1.deleteQueue();
-		queue1.deleteQueue();
-		queue1.deleteQueue();
-		queue1.deleteQueue();
+		queue1.deQueue();
+		queue1.deQueue();
+		queue1.deQueue();
+		queue1.deQueue();
 	}
 
 }

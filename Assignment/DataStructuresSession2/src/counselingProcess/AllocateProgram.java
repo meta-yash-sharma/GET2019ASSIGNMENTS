@@ -8,6 +8,7 @@ public class AllocateProgram {
 	private static List<Allocate> studentAllocate = new ArrayList<Allocate>();
 
 	public void allocate(){
+		System.out.println("Size : "+ReadExcel.getStudentQueue().size());
 		while (ReadExcel.getStudentQueue().size() > 0){
 
 			for(int index = 0 ; index < 5; index++ ){

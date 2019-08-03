@@ -1,10 +1,7 @@
 package stack;
 
-import queue.ImplementQueue;
 
-
-
-public class Stack {
+public class Stack implements StackInterface {
 
 	public static Node Top;
 
@@ -17,7 +14,7 @@ public class Stack {
 			this.next = null;
 		}
 	}
-	
+	@Override
 	public void push(String data){
 		
 		Node newNode = new Node(data);
@@ -33,6 +30,7 @@ public class Stack {
 		//System.out.println(Top.data);
 	}
 	
+	@Override
 	public Node pop(){
 		
 		Node newNode = Top;
@@ -42,6 +40,7 @@ public class Stack {
 		return newNode;
 	}
 	
+	@Override
 	public Node top(){
 		return Top;
 	}
@@ -52,14 +51,4 @@ public class Stack {
 			isEmpty = true;
 		return isEmpty;
 	}
-		
-	public static void main(String[] args) {
-		
-		Stack s1 = new Stack();
-		
-		
-		
-		
-	}
-
 }
