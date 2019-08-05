@@ -26,17 +26,13 @@ public class OrganicChemistry {
 		int compoundmMass = 0;
 		char ch;
 		for (int i = 0; i < compound.length(); i++) {
-			//get character from compound string
 			ch = compound.charAt(i);
-			//if character is a molecule
 			if (molecules.keySet().contains(ch)){
 				//put mass of molecule in stack
 				stack.push(molecules.get(ch).toString());
 			}
-			//if character is a digit
 			else if (Character.isDigit(ch)) {
 				int value = 0;
-				//add value till molecule occur
 				while (Character.isDigit(ch)) {
 					value = value * 10 + Character.getNumericValue(ch);
 					i++;
@@ -53,30 +49,23 @@ public class OrganicChemistry {
 				stack.push((Integer.parseInt(stack.pop()) * value) + "");
 			} 
 			else if (ch == '('){
-				//if character is open parenthesis
 				stack.push(ch + "");
 			}
-			//if character is close parenthesis
 			else if (ch == ')') {
 				int sum = 0;
 				String popped = stack.pop();
-				//pop value till open parenthesis occur
 				while (!popped.equals("(")) {
-					//add value
 					sum += Integer.parseInt(popped);
 					popped = stack.pop();
 				}
-				//push sum in stack
 				stack.push(sum + "");
 			}else{
 				throw new AssertionError("invalid compound");
 			}
 		}
-		//create compound mass
 		while (!stack.isEmpty()) {
 			compoundmMass += Integer.parseInt(stack.pop());
 		}
-		//return compound mass 
 		return compoundmMass;
 	}
 	public static void main(String[] args){
