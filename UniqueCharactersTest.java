@@ -12,7 +12,7 @@ class UniqueCharactersTest {
 	 */
 	@Test
 	public void test1() {
-		String checkString = "vatsal is a vatsal boy";
+		String checkString = "Yash is a Yash boy";
 		int actual = UniqueCharacters.countUnique(checkString);
 		assertEquals(9, actual);
 	}
