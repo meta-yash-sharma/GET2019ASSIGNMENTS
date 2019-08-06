@@ -122,6 +122,44 @@ public class LinkedList {
 		}		
 	}
 	
+	@Override
+    public boolean equals(Object obj) 
+    { 
+          
+    // if both the object references are  
+    // referring to the same object. 
+    if(this == obj) 
+            return true; 
+          
+        // it checks if the argument is of the  
+        // type Employee by comparing the classes  
+        // of the passed argument and this object.
+        if(obj == null || obj.getClass()!= this.getClass()) 
+            return false; 
+          
+        // type casting of the argument.  
+        LinkedList list = (LinkedList) obj; 
+          
+        // comparing the state of argument with  
+        // the state of 'this' Object. 
+        return (list.head == this.head); 
+    }
+	
+	@Override
+	public int hashCode() 
+    	{ 
+          
+        // We are returning the Employee_employeeId  
+        // as a hashcode value. 
+        // we can also return some  
+        // other calculated value or may 
+        // be memory address of the  
+        // Object on which it is invoked.  
+        // it depends on how you implement  
+        // hashCode() method. 
+     		return this.head.data.getEmployeeId();
+    	}
+	
 	
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
