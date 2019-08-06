@@ -7,16 +7,14 @@ public class Main {
 
 		BST bst = new BST(filePath);
 
-		Node obj3 = new Node(3, "Ram");
-		Node obj4 = new Node(4, "Komal");
+		Node obj = new Node(4, "Komal");
 
 		// Adding nodes to the BST.
-		bst.add(obj3, bst.root);
-		bst.add(obj4, bst.root);
+		bst.add(obj, bst.root);
 
 		System.out.println();
 		System.out.println("Word deleted from dictinary with key : 45 ");
-		Node objdel1 = bst.delete(45, bst.root);
+		Node objdeleted = bst.delete(45, bst.root);
 		System.out.println("Sorted List After Deletion according to Key is:");
 		bst.sortedList(bst.root);		
 		for (int i = 0; i < bst.sortedListValues.size(); i++) {
@@ -26,11 +24,11 @@ public class Main {
 		System.out.println();
 
 		System.out.println("Searching value in tree With The Key : 2");
-		String objsearch = bst.getValue(2, bst.root);
+		String objToSearch = bst.getValue(2, bst.root);
 		if (objsearch == null)
 			System.out.println("Given key is not found.. Wrong input key!!.. So null value returned!!..");
 		else
-			System.out.println(objsearch);
+			System.out.println(objToSearch);
 		System.out.println();
 		
 		// Clear before Every call or the new Range will be added with the previous data.
