@@ -45,7 +45,7 @@ public class EmployeeLinkedListTest {
 		list2.push(e4);
 		
 		
-		assertEquals(list2.getHead().data.toString(),list.mergeSort(list.head).data.toString());
+		assertEquals(list2.head,list.mergeSort(list.head));
 	}
 
 }
