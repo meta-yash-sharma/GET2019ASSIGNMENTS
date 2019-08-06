@@ -142,11 +142,6 @@ public class BST implements DictionaryInterface {
 			else if (key > root.getKey())
 				root.right = delete(key, root.right);
 			else {
-				// leaf node
-				if (root.left == null && root.right == null) {
-					return null;
-				}
-
 				// Node having 1 child
 				if (root.left == null && root.right != null) {
 					return root.right;
@@ -159,6 +154,7 @@ public class BST implements DictionaryInterface {
 				if (root.left != null && root.right != null) {
 					Node node = findMin(root.right);
 					root.setKey(node.getKey());
+					root.setValue(node.getValue());
 					return root;
 				}
 			}
