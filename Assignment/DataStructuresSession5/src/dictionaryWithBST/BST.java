@@ -133,7 +133,7 @@ public class BST implements DictionaryInterface {
 
 			// base case
 			if (root == null){
-				throw new NullPointerException();
+				return root;
 			}
 
 			if (key < root.getKey())
