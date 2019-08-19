@@ -1,33 +1,66 @@
 USE yash;
 
-
--- 1.Create a view displaying the order information 
--- (Id, Title, Price, Shopper’s name, Email, Orderdate, Status) 
--- with latest ordered items should be displayed first for last 60 days.--------------------
-
-CREATE VIEW Order_Information AS SELECT o.order_id,c.product_id,p.product_name AS product_name,c.quantity,p.product_price*c.quantity AS total_price,s.shopper_name,o.date,o.status
-                                 FROM order_details o INNER JOIN cart c ON o.cart_id = c.cart_id
-                                      INNER JOIN product p ON c.product_id = p.product_id
-                                      INNER JOIN shopper s ON o.cart_id = s.shopper_id
-                                 WHERE DATEDIFF(CURDATE(),o.date)<=60
-                                 ORDER BY o.date DESC;
-                                 
-SELECT * FROM Order_Information;
-
-
--- 2.Use the above view to display the Products(Items) which are in 
--- ‘shipped’ state.  ---------------------------------------------------------------------------
-SELECT order_id,product_id,product_name,quantity,total_price,shopper_name,date,status
-FROM Order_Information
-WHERE status IN('shipped');
+-- 1.Display Shopper’s information along with number 
+-- of orders he/she placed during last 30 days.-------------------------------------------------------------
+SELECT s.shopper_id,s.shopper_name,COUNT(*) AS number_of_order
+FROM shopper s INNER JOIN order_details o ON s.shopper_id = o.cart_id
+WHERE DATEDIFF(CURDATE(),o.date) <= 30
+GROUP BY s.shopper_id;
 
 
 
+-- 2.Display the top 10 Shoppers who generated maximum 
+-- number of revenue in last 30 days.----------------------------------------------------------------------------
+SELECT s.shopper_id,s.shopper_name,SUM(p.product_price*c.quantity) AS generated_revenue
+FROM shopper s INNER JOIN order_details o ON s.shopper_id = o.cart_id
+     INNER JOIN cart c ON o.cart_id = c.cart_id
+     INNER JOIN product p ON c.product_id=p.product_id
+WHERE DATEDIFF(CURDATE(),o.date)<=30 AND o.status NOT IN('returned')
+GROUP BY s.shopper_id
+ORDER BY generated_revenue DESC
+LIMIT 10;
 
--- 3.Use the above view to display the top 5 most selling products. -----------------------------
-SELECT product_id,product_name,SUM(quantity) AS total_ordered_quantity
-FROM Order_Information
-WHERE status NOT IN('returned')
-GROUP BY product_id
-ORDER BY total_ordered_quantity DESC
-LIMIT 5;
+
+
+-- 3.Display top 20 Products which are ordered most in 
+-- last 60 days along with numbers.----------------------------------------------------------------------------------
+SELECT p.product_id,p.product_name, SUM(op.quantity) AS ordered_product_quantity
+FROM product p INNER JOIN cart op ON p.product_id = op.product_id 
+     INNER JOIN order_details o ON op.cart_id = o.cart_id
+WHERE DATEDIFF(CURDATE(),o.date) <= 60
+GROUP BY p.product_id
+ORDER BY ordered_product_quantity DESC
+LIMIT 20;
+
+
+
+-- 5.Mark the products as Inactive which are not ordered in last 90 days(not working).-------------------------------------------------
+SET SQL_SAFE_UPDATES = 0;
+UPDATE product p
+SET is_active = false
+WHERE p.product_id NOT IN(SELECT o.product_id
+                FROM order_details o 
+                LEFT JOIN cart c 
+                ON c.cart_id = o.cart_id
+                WHERE o.product_id = c.product_id AND DATEDIFF(CURDATE(),o.date) <= 90);
+
+SET SQL_SAFE_UPDATES = 1;
+SELECT * FROM product;
+
+
+
+-- 6.Given a category search keyword, display all the Products 
+-- present in this category/categories. -----------------------------------------------------------------------------------
+SELECT p.product_id,p.product_name AS product_name,c.category_name AS category_title
+FROM product p INNER JOIN product_category pc ON p.category_id = pc.category_id 
+     INNER JOIN product_category c ON pc.category_id = c.category_id
+WHERE c.category_name IN('asus','mobile');
+
+
+#7.Display top 10 Items which were returnedmost.------------------------------------------------------------------------
+SELECT p.product_id,p.product_name,COUNT(*) AS returned_count
+FROM product p INNER JOIN order_details o ON p.product_id = o.product_id
+WHERE o.status IN('returned')
+GROUP BY p.product_id
+ORDER BY returned_count DESC
+LIMIT 10;
