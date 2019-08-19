@@ -33,8 +33,19 @@ ORDER BY ordered_product_quantity DESC
 LIMIT 20;
 
 
+-- 4.Display Monthly sales revenue of the StoreFront for last 6 months. 
+-- It should display each month’s sale. --------------------------------------------------------------------------------
+SELECT MONTH(o.date) AS month,SUM(p.product_price*c.quantity) AS sales_revenue
+FROM order_details o 
+    INNER JOIN cart c ON o.cart_id = c.cart_id
+    INNER JOIN product p ON c.product_id = p.product_id
+WHERE TIMESTAMPDIFF(MONTH,o.date,CURDATE()) <= 6 AND o.status NOT IN('returned')
+GROUP BY month;
 
--- 5.Mark the products as Inactive which are not ordered in last 90 days(not working).-------------------------------------------------
+
+
+
+-- 5.Mark the products as Inactive which are not ordered in last 90 days.-------------------------------------------------
 SET SQL_SAFE_UPDATES = 0;
 UPDATE product p
 SET is_active = false
