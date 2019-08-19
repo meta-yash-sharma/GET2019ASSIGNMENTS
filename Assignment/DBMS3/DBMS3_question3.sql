@@ -59,10 +59,11 @@ SELECT * FROM product;
 
 -- 6.Given a category search keyword, display all the Products 
 -- present in this category/categories. -----------------------------------------------------------------------------------
-SELECT p.product_id,p.product_name AS product_name,c.category_name AS category_title
-FROM product p INNER JOIN product_category pc ON p.category_id = pc.category_id 
-     INNER JOIN product_category c ON pc.category_id = c.category_id
-WHERE c.category_name IN('asus','mobile');
+SELECT p.product_id,p.product_name AS product_name,pc.category_name AS category_title
+FROM product p 
+INNER JOIN product_category pc 
+ON p.category_id = pc.category_id 
+WHERE pc.category_name IN('asus','mobile');
 
 
 #7.Display top 10 Items which were returnedmost.------------------------------------------------------------------------
