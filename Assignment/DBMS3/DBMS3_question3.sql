@@ -34,12 +34,17 @@ LIMIT 20;
 
 
 
--- 5.Mark the products as Inactive which are not ordered in last 90 days.-------------------------------------------------
+-- 5.Mark the products as Inactive which are not ordered in last 90 days(not working).-------------------------------------------------
+SET SQL_SAFE_UPDATES = 0;
 UPDATE product p
 SET is_active = false
-WHERE p.product_id NOT IN(SELECT p.product_id
-                FROM order_details o LEFT JOIN cart c ON c.cart_id = o.cart_id
-                WHERE p.product_id = c.product_id AND DATEDIFF(CURDATE(),o.date) <= 90);
+WHERE p.product_id NOT IN(SELECT o.product_id
+                FROM order_details o 
+                LEFT JOIN cart c 
+                ON c.cart_id = o.cart_id
+                WHERE o.product_id = c.product_id AND DATEDIFF(CURDATE(),o.date) <= 90);
+
+SET SQL_SAFE_UPDATES = 1;
 SELECT * FROM product;
 
 
