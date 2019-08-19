@@ -7,14 +7,13 @@ state VARCHAR(100) NOT NULL,
 PRIMARY KEY(zipcode)
 );
 
-INSERT INTO Zipcode(zipcode, city, state)
-            VALUES(313001, 'udaipur', 'rajasthan'),
-                  (302001, 'jaipur', 'rajasthan'),
-                  (305001, 'ajmer', 'rajasthan'),
-                  (282001, 'agra', 'madhya pradesh'),
-                  (411001, 'pune', 'maharashtra'),
-                  (321001, 'bharatpur', 'rajasthan'),
-                  (400008, 'mumbai', 'maharashtra');
+INSERT INTO Zipcode(zipcode, city, state) VALUES(313001, 'udaipur', 'rajasthan'),
+(302001, 'jaipur', 'rajasthan'),
+(305001, 'ajmer', 'rajasthan'),
+(282001, 'agra', 'madhya pradesh'),
+(411001, 'pune', 'maharashtra'),
+(321001, 'bharatpur', 'rajasthan'),
+(400008, 'mumbai', 'maharashtra');
 
 SELECT zipcode,city,state
 FROM Zipcode
