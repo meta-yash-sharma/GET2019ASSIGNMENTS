@@ -33,15 +33,12 @@ ORDER BY ordered_product_quantity DESC
 LIMIT 20;
 
 
--- 4.Display Monthly sales revenue of the StoreFront for last 6 months. 
--- It should display each month’s sale. --------------------------------------------------------------------------------
-SELECT MONTH(o.date) AS month,SUM(p.product_price*c.quantity) AS sales_revenue
-FROM order_details o 
-    INNER JOIN cart c ON o.cart_id = c.cart_id
-    INNER JOIN product p ON c.product_id = p.product_id
-WHERE TIMESTAMPDIFF(MONTH,o.date,CURDATE()) <= 6 AND o.status NOT IN('returned')
-GROUP BY month;
 
+#4.Display Monthly sales revenue of the StoreFront for last 6 months. It should display each month’s sale.
+SELECT MONTHNAME(order_details.date) AS month , SUM(order_details.price) AS total_revenue
+FROM order_details
+WHERE order_details.date > CURRENT_TIMESTAMP - INTERVAL 6 month 
+GROUP BY month(order_details.date);
 
 
 
