@@ -1,10 +1,12 @@
 use yash;
 
-#1.Display the list of products (Id, Title, Count of Categories) which fall in more than one Categories)(not working)-----------------
+#1.Display the list of products (Id, Title, Count of Categories) which fall in more than one Categories)-----------------
 SELECT p.product_id,p.product_name,COUNT(*) AS category_count
-FROM product p INNER JOIN product_category pc ON p.category_id = pc.category_id
-GROUP BY p.category_id
-HAVING category_count>1;
+FROM product p 
+INNER JOIN product_category pc 
+ON p.category_id = pc.category_id
+GROUP BY p.product_name
+HAVING category_count > 1;
 
 
 /*
