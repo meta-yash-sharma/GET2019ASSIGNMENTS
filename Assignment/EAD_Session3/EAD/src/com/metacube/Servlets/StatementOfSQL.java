@@ -10,8 +10,10 @@ import java.sql.SQLException;
 
 public class StatementOfSQL {
 
-	public static void insertData(String first_name, String last_name, 
+	public static int insertData(String first_name, String last_name, 
 			String father_name, String email, int class_no, int age){
+		
+		int a = Integer.MIN_VALUE;
 
 		try{
 
@@ -36,7 +38,7 @@ public class StatementOfSQL {
 			pstmt.setInt(5, class_no);
 			pstmt.setInt(6, age);
 
-			pstmt.execute();
+			a = pstmt.executeUpdate();
 
 			stmt.executeQuery(query.FOREIGN_KEY_CHECKS_1());
 
@@ -55,7 +57,7 @@ public class StatementOfSQL {
 			//Handle errors for Class.forName
 			e.printStackTrace();
 		}
-
+		return a;
 	}
 
 
