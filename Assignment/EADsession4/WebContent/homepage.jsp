@@ -7,9 +7,11 @@
 <title>Homepage</title>
 </head>
 <body>
+<a href = "Logout">Click Here</a> To Logout
 <div align = "center">
 	<a href = "EditEmployee" > Edit Details </a> <br>
-	<a href = "FriendList" > Friend List </a>  <br> 
+	<a href = "FriendList" > Friend List </a>  <br>
+
 	</div>
 
 </body>

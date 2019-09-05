@@ -50,7 +50,8 @@ public class EmployeeLogin extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("empId", String.valueOf(empId));
-		//out.print(flag2);
+		session.setAttribute("email", email);
+		
 		
 		if(empId > 0){
 			
