@@ -1,0 +1,155 @@
+#home-Part {
+    background-image: url('image/homebg.png');
+    height: 959px;
+}
+
+.flex_container {
+    display: flex;    
+    padding: 20px;
+}
+
+.justify-space-around {
+    justify-content: space-around;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.flex_wrap {
+    flex-wrap: wrap;
+}
+
+.nav_class {     
+    font-size: 25px;
+}
+
+.link_class {
+    color: whitesmoke;
+    padding-left: 30px;   
+}
+
+#heading_class {
+    font-size: 60px; 
+    color:whitesmoke;   
+ }
+
+ .flex_container_align_self {
+    align-self: center;
+ }
+
+ .button_style_red {
+    padding: 6px;
+    font-size: 20px;
+    margin: 10px;
+    color: whitesmoke;
+    background: red;
+ }
+
+ .button_style_blue {
+    padding: 6px;
+    font-size: 20px;
+    margin: 10px;
+    color: whitesmoke;
+    background: blue;
+ }
+
+ .h2-Style {
+    color: rgb(49, 146, 206); 
+    font-size: 35px; 
+    text-align: center
+ }
+
+ .secondary-data-grey {
+    color: rgba(128, 128, 128, 0.575); 
+    font-size: 20px;
+ }
+
+ .span_style {
+     padding: 10px;
+    font-size: 25px;
+    padding-left: 20px;
+ }
+
+ .paragraph_style {
+     font-size: 18px;
+ }
+
+ .margin {
+     margin-top: 100px;
+ }
+
+ .blue {
+     color: rgb(9, 156, 241);
+ }
+
+ #appdownload1 {
+     margin-top: 100px; 
+ }
+
+ .pading-right {
+     padding-right: 20px;
+ }
+
+ .color-white {
+     color: whitesmoke;
+ }
+
+ .color-orange {
+     color: rgb(253, 101, 0);
+ }
+
+ .color-grey {
+     color: rgba(128, 128, 128, 0.925);
+ }
+
+.size {
+    font-size: 60px;
+}
+
+ .font-size {
+     font-size: 25px;
+ }
+
+ .background-color-footer {
+    background-color: #383a53;
+ }
+
+ .hr-style {
+     width: 77%;
+     align-self: center;
+ }
+
+
+ #footer_Part {
+    background-image: url('image/downloadbg.png');
+    height: 350px;
+ }
+
+ .margin-left-px{
+     margin-left: 200px;
+ }
+ 
+ .margin-right-px {
+     margin-right: 200px;
+ }
+
+ #image1 {
+    transform: scale(.7) translate(260px,0px) skewY(5deg);
+ }
+
+ #image2 {
+    transform: scale(.85) translate(50px,0px)  skewY(2deg);
+}
+
+#image3 {
+    transform: translate(-630px,0)
+}
+
+#image4 {
+    transform: scale(.85) translate(30px,0px)  skewY(-2deg);
+}
+
+#image5 {
+    transform: scale(.7) translate(740px,0px)  skewY(-5deg);
+}
