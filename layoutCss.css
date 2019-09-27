@@ -26,7 +26,8 @@
 
 .link_class {
     color: whitesmoke;
-    padding-left: 30px;   
+    padding-left: 30px;
+    text-decoration: none;   
 }
 
 #heading_class {
@@ -38,20 +39,22 @@
     align-self: center;
  }
 
- .button_style_red {
-    padding: 6px;
+ .button_style_orange {
+    padding: 13px;
     font-size: 20px;
     margin: 10px;
     color: whitesmoke;
-    background: red;
+    background: rgb(255, 81, 0);
+    text-decoration: none;
  }
 
  .button_style_blue {
-    padding: 6px;
+    padding: 13px;
     font-size: 20px;
     margin: 10px;
     color: whitesmoke;
     background: blue;
+    text-decoration: none;
  }
 
  .h2-Style {
