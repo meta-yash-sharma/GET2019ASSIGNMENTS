@@ -3,6 +3,19 @@
     height: 959px;
 }
 
+.padding15{
+    padding: 15px;
+}
+
+.margin-left15{
+    margin-left: 15%;
+}
+
+.marginOf-weather-app {
+    margin-left: 7%; 
+    margin-top: 20px;
+}
+
 .flex_container {
     display: flex;    
     padding: 20px;
@@ -138,21 +151,32 @@
  }
 
  #image1 {
-    transform: scale(.7) translate(260px,0px) skewY(5deg);
+    transform: scale(.6,.7) translate(100px,0px) skewY(5deg);
  }
 
  #image2 {
-    transform: scale(.85) translate(50px,0px)  skewY(2deg);
+    transform: scale(.7,.85) translate(-150px,0px)  skewY(2deg);
 }
 
 #image3 {
-    transform: translate(-630px,0)
+    transform: translate(-830px,0) scale(.8,.9)
 }
 
 #image4 {
-    transform: scale(.85) translate(30px,0px)  skewY(-2deg);
+    transform: scale(.7,.85) translate(-350px,0px)  skewY(-2deg);
 }
 
 #image5 {
-    transform: scale(.7) translate(740px,0px)  skewY(-5deg);
+    transform: scale(.6,.7) translate(400px,0px)  skewY(-5deg);
+}
+
+.margin-left-10 {
+    margin-left: 10%;
+}
+.margin-left-9 {
+    margin-left: 7%;
+}
+
+.margin-right-15 {
+    margin-right: 10%;
 }
