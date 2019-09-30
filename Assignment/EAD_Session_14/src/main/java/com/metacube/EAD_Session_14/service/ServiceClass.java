@@ -21,23 +21,22 @@ public class ServiceClass {
 	@Autowired
 	private StudentRepo repo;
 	
-	@Transactional
-    public void add(Student student) {
+	
+   	public void add(Student student) {
 		repo.save(student);
-    }
+    	}
 	
-	@Transactional(readOnly=true)
-    public List<Student> findAll() {
-        return repo.findAll();
-    }
-	
-	@Transactional(readOnly=true)
-    public List<Student> findByNameIs(String name) {
-        return repo.findByNameIs(name);
-    }
 
-    @Transactional(readOnly=true)
-    public List<Student> findByfirstNameContainingIgnoreCase(String searchString) {
-        return repo.findByfirstNameContainingIgnoreCase(searchString);
-    }
+    	public List<Student> findAll() {
+        	return repo.findAll();
+    	}
+	
+
+    	public List<Student> findByNameIs(String name) {
+        	return repo.findByNameIs(name);
+    	}
+
+    	public List<Student> findByfirstNameContainingIgnoreCase(String searchString) {
+        	return repo.findByfirstNameContainingIgnoreCase(searchString);
+    	}
 }
