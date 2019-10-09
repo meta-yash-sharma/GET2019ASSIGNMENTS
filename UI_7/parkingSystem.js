@@ -78,11 +78,11 @@ function myPlan(event) {
     x.setAttribute("class", "display-4");
 
     if(plan == daily) {
-        x.innerHTML = "Price of Plan is : "+ daily;
+        x.innerHTML = "Price of Plan is : "+ daily +" Rs";
     } else if(plan == yearly) {
-        x.innerHTML = "Price of Plan is : "+ yearly;
+        x.innerHTML = "Price of Plan is : "+ yearly +" Rs";
     } else {
-        x.innerHTML = "Price of Plan is : "+ monthly;   
+        x.innerHTML = "Price of Plan is : "+ monthly +" Rs";   
     }
 
     var e = document.getElementById("planOption");
