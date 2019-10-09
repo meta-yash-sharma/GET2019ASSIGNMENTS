@@ -198,6 +198,37 @@ function switchcase(idOfInput) {
             }
             // code block
             break;
+        case 'genderF':
+            {
+                gender = document.getElementById("genderF").value;
+                var string = "Hi " + name + "( " + gender + " ) can I now Know your email";
+                document.getElementById("data").innerHTML = string;
+
+                var e = document.getElementById("gender"); //Get the element
+                e.setAttribute("id", "youremail"); //Change id to gender
+
+
+                var x = document.createElement("INPUT");
+                x.setAttribute("type", "text");
+                x.setAttribute("id", "email");
+                x.setAttribute("class", "w-25");
+                x.setAttribute("onkeypress", "hideFullName(event)");
+                e.appendChild(x);
+
+                var child = document.getElementById("Male")
+                e.removeChild(child);
+
+                var child = document.getElementById("Female")
+                e.removeChild(child);
+
+                var child = document.getElementById("genderM")
+                e.removeChild(child);
+
+                var child = document.getElementById("genderF")
+                e.removeChild(child);
+            }
+            // code block
+            break;
         case 'email':
             {
                 email = document.getElementById("email").value;
