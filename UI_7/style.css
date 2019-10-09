@@ -6,3 +6,8 @@ label {
 input.radio {
     size: 15px;
 }
+
+p {
+    font-size: 30px;
+    text-align: center;
+}
