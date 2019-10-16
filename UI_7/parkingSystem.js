@@ -1,6 +1,6 @@
 var name, gender, email, password, contactNumber, vehiclename, vehicleType, vehiclenumber, Identification, currencyType, price;
 var idOfInput;
-var dailydaily = 5;
+var daily = 5;
 var monthly = 100;
 var yearly = 500;
 
@@ -32,12 +32,12 @@ function Type(event) {
 function validatePassword(event) {
     password = document.getElementById("mypassword").value;
     document.getElementById("mypassword").style.borderWidth = "thick";
-    if (password.length < 8) {
+    if (password.length < 7) {
 
         document.getElementById("mypassword").style.borderColor = "red";
         document.getElementById("error").innerHTML = "password should be of min 8 characters";
 
-    } else if (!(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password))) {
+    } else if (!(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/.test(password))) {
 
         document.getElementById("mypassword").style.borderColor = "orange";
         document.getElementById("error").innerHTML = "password should contains Uppercase, Lowercase, Numeric";
@@ -58,6 +58,7 @@ function validatePassword(event) {
             x.setAttribute("class", "w-25");
             x.setAttribute("onkeypress", "hideFullName(event)");
             e.appendChild(x);
+            document.getElementById("confirmpassword").focus();
 
             var child = document.getElementById("mypassword")
             e.removeChild(child);
@@ -77,12 +78,12 @@ function myPlan(event) {
     x.setAttribute("id", "Price");
     x.setAttribute("class", "display-4");
 
-    if(plan == daily) {
-        x.innerHTML = "Price of Plan is : "+ daily +" Rs";
-    } else if(plan == yearly) {
-        x.innerHTML = "Price of Plan is : "+ yearly +" Rs";
-    } else {
-        x.innerHTML = "Price of Plan is : "+ monthly +" Rs";   
+    if (plan == "Daily") {
+        x.innerHTML = "Price of Plan of type :"+plan + " is : " + daily + " Rs";
+    } else if (plan == "Montly") {        
+        x.innerHTML = "Price of Plan of type :" + plan + " is : " + monthly + " Rs";
+    } else if(plan == "yearly"){
+        x.innerHTML = "Price of Plan of type :" + plan + " is : " + yearly + " Rs";
     }
 
     var e = document.getElementById("planOption");
@@ -104,16 +105,15 @@ function myPlan(event) {
     var child = document.getElementById("yearlyP")
     e.removeChild(child);
 
-    
-
     var e = document.getElementById("planOption");
     e.appendChild(x);
 
 
 }
 
-function onloaad(){
-    document.body.style.backgroundColor="#7FDBFF";
+function onloaad() {
+    document.body.style.backgroundColor = "#577284";
+    document.getElementById("name").focus();
 }
 
 function switchcase(idOfInput) {
@@ -121,7 +121,7 @@ function switchcase(idOfInput) {
     switch (idOfInput) {
         case 'name':
             {
-               
+
                 name = document.getElementById("name").value;
 
                 if (!(/^[A-z ]{2,}$/.test(name))) {
@@ -154,7 +154,7 @@ function switchcase(idOfInput) {
                     x.setAttribute("value", "Female");
                     x.setAttribute("id", "genderF");
                     x.setAttribute("name", "gender");
-                    x.setAttribute("onclick", "mygender(value)");
+                    x.setAttribute("onclick", "mygender(event)");
                     e.appendChild(x);
                     var x = document.createElement("Label");
                     x.setAttribute("id", "Female")
@@ -183,6 +183,7 @@ function switchcase(idOfInput) {
                 x.setAttribute("class", "w-25");
                 x.setAttribute("onkeypress", "hideFullName(event)");
                 e.appendChild(x);
+                document.getElementById("email").focus();
 
                 var child = document.getElementById("Male")
                 e.removeChild(child);
@@ -214,6 +215,8 @@ function switchcase(idOfInput) {
                 x.setAttribute("class", "w-25");
                 x.setAttribute("onkeypress", "hideFullName(event)");
                 e.appendChild(x);
+
+                document.getElementById("email").focus();
 
                 var child = document.getElementById("Male")
                 e.removeChild(child);
@@ -250,6 +253,7 @@ function switchcase(idOfInput) {
                     x.setAttribute("class", "w-25");
                     x.setAttribute("onkeypress", "validatePassword(event)");
                     e.appendChild(x);
+                    document.getElementById("mypassword").focus();
 
                     var child = document.getElementById("email")
                     e.removeChild(child);
@@ -272,6 +276,7 @@ function switchcase(idOfInput) {
                     x.setAttribute("class", "w-25");
                     x.setAttribute("onkeypress", "hideFullName(event)");
                     e.appendChild(x);
+                    document.getElementById("contactNumber").focus();
 
                     var child = document.getElementById("confirmpassword")
                     e.removeChild(child);
@@ -284,7 +289,7 @@ function switchcase(idOfInput) {
             break;
         case 'contactNumber':
             {
-                document.body.style.backgroundColor="#FF851B";
+                document.body.style.backgroundColor = "#9F9C99";
                 contactNumber = document.getElementById("contactNumber").value;
                 var string = "Hi " + name + " Can I Know your Vechiel Name";
                 document.getElementById("data").innerHTML = string;
@@ -298,6 +303,7 @@ function switchcase(idOfInput) {
                 x.setAttribute("class", "w-25");
                 x.setAttribute("onkeypress", "hideFullName(event)");
                 e.appendChild(x);
+                document.getElementById("vehiclename").focus();
 
                 var child = document.getElementById("contactNumber")
                 e.removeChild(child);
@@ -333,9 +339,9 @@ function switchcase(idOfInput) {
                 x.appendChild(option3);
 
                 x.setAttribute("onkeypress", "hideFullName(event)");
-
-
                 e.appendChild(x);
+
+                document.getElementById("vehicletype").focus();
 
                 var child = document.getElementById("vehiclename")
                 e.removeChild(child);
@@ -356,14 +362,15 @@ function switchcase(idOfInput) {
                 x.setAttribute("class", "w-25");
                 x.setAttribute("onkeypress", "hideFullName(event)");
                 e.appendChild(x);
-
+                document.getElementById("vehiclenumber").focus();
+                
                 var child = document.getElementById("vehicletype")
                 e.removeChild(child);
             }
             break;
         case 'vehiclenumber':
             {
-                document.body.style.backgroundColor="#DDDDDD";
+                document.body.style.backgroundColor = "#DDDDDD";
                 vehiclenumber = document.getElementById("vehiclenumber").value;
                 var string = "Hi " + name + " you vechiel name is :" + vehiclename + " type : " + vehicleType + " Now You can choose Currency type.";
                 document.getElementById("data").innerHTML = string;
@@ -392,9 +399,9 @@ function switchcase(idOfInput) {
                 x.appendChild(option3);
 
                 x.setAttribute("onkeypress", "hideFullName(event)");
-
-
                 e.appendChild(x);
+
+                document.getElementById("currencyType").focus();
 
                 var child = document.getElementById("vehiclenumber")
                 e.removeChild(child);
@@ -402,10 +409,6 @@ function switchcase(idOfInput) {
             break;
         case 'currencyType':
             {
-                daily = 5;
-                monthly = 100;
-                yearly = 500;
-
                 currencyType = document.getElementById("currencyType").value;
                 var string = "Hi " + name + " Can You Choose a plan out of given option .";
 
